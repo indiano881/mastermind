@@ -3,7 +3,7 @@ const COLOUR_DATABASE = ["red","yellow", "green", "blue", "pink","white"];
 let computerColourChoice = ["empty-colour","empty-colour","empty-colour","empty-colour"];
 let userColourChoice = new Array(4);
 let placeholderColourMatch= new Array (4);
-
+let userHasWon= false;
 
 for (let i=0; i<computerColourChoice.length; i++) {
 
@@ -14,33 +14,45 @@ for (let i=0; i<computerColourChoice.length; i++) {
 //user: welcome and choiche of coulurs
 alert("***** Welcome at Mastermind *****")
 
-do {
+
 //insert while quality test
-for (let i=0; i<userColourChoice.length; i++) {
-
-        userColourChoice[i]= prompt("Choose within red--yellow--green--blue--pink--white-- at position"+ (i+1) +"/4? \n Your choiche are " +userColourChoice.join("--")).toLocaleLowerCase();
-
-}
 
 
+do {
+    if (placeholderColourMatch!==computerColourChoice) {
+
+        userHasWon=false;
+
+        for (let i=0; i<userColourChoice.length; i++) {
+
+            userColourChoice[i]= prompt("Choose within red--yellow--green--blue--pink--white-- at position"+ (i+1) +"/4? \n Your choiche are " +userColourChoice.join("--")).toLocaleLowerCase();
+    
+        }
+        for (let i=0; i<userColourChoice.length; i++) {
+            if (userColourChoice[i]===computerColourChoice[i]) {
+                placeholderColourMatch[i]=computerColourChoice[i];
+                console.log(userColourChoice[i] + " is CORRECT in place n."+ (i+1));
+        //inserire un else if in caso colore presente ma non al posto giusto
+            
+            } else {
+
+            }
+
+        } 
+    } else {
+        console.log("congratulation! You Won!!")
+        break;
+    }
+
+
+    console.log(computerColourChoice);
+    console.log(userColourChoice)
+    console.log(placeholderColourMatch)
+} while ( userHasWon===false);
 // CHECKING IF IMPUT ARE VALID
 
-for (let i=0; i<userColourChoice.length; i++) {
-    if (userColourChoice[i]===computerColourChoice[i]) {
-        placeholderColourMatch[i]=computerColourChoice[i];
-        console.log(userColourChoice[i] + " is CORRECT in place n."+ (i+1));
-//inserire un else if in caso colore presente ma non al posto giusto
-    } else {
 
-    }
-    console.log(computerColourChoice);
-console.log(userColourChoice)
-console.log(placeholderColourMatch)
-}
-} while (placeholderColourMatch!==computerColourChoice)
-console.log(computerColourChoice);
-console.log(userColourChoice)
-console.log(placeholderColourMatch)
+
 
 
 
