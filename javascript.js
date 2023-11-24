@@ -18,3 +18,15 @@ console.log(computerColourChoice);
 alert("***** Welcome at Mastermind *****")
 
 let userColourChoice = ["empty-colour","empty-colour","empty-colour","empty-colour"];
+//insert test to check cancel ewmpty or wrong input!!!!
+for (let i=0; i<userColourChoice.length; i++) {
+    userColourChoice[i]= prompt("Which colour you want to choose at position"+ (i+1) +"/4?")
+}
+console.log(userColourChoice)
+
+
+/*
+do {
+
+} while (userColourChoice!==computerColourChoice)
+*/
