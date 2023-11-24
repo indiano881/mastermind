@@ -1,9 +1,5 @@
 
-//MASTERMIND
-
 const COLOUR_DATABASE = ["red","yellow", "green", "blue", "pink","white"];
-
-
 
 //generated a random array with 4 colour
 let computerColourChoice = ["empty-colour","empty-colour","empty-colour","empty-colour"];
@@ -14,19 +10,16 @@ for (let i=0; i<computerColourChoice.length; i++) {
 }
 
 console.log(computerColourChoice);
-//user choice
+//user: welcome and choiche of coulurs
 alert("***** Welcome at Mastermind *****")
 
-let userColourChoice = ["empty-colour","empty-colour","empty-colour","empty-colour"];
-//insert test to check cancel ewmpty or wrong input!!!!
+let userColourChoice = new Array(4);
+//insert while quality test
 for (let i=0; i<userColourChoice.length; i++) {
-    userColourChoice[i]= prompt("Which colour you want to choose at position"+ (i+1) +"/4?")
+
+        userColourChoice[i]= prompt("Choose within red--yellow--green--blue--pink--white-- at position"+ (i+1) +"/4? \n Your choiche are" +userColourChoice).toLocaleLowerCase();
+
 }
 console.log(userColourChoice)
 
-
-/*
-do {
-
-} while (userColourChoice!==computerColourChoice)
-*/
+// CHECKING IF IMPUT ARE VALID
