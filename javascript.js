@@ -21,7 +21,10 @@ console.log(computerColourChoice);
     console.log(userColourChoice);
     console.log(placeholderColourMatch);
 
-    if (placeholderColourMatch!==computerColourChoice) {
+    //inserire 3 livelli con number of guesses
+    //chiudere tutto in un for loop?
+
+    if (userHasWon= "not yet") { //ERRORE LOGICO SU COME PARAGONARE UN ARRAY
 
         userHasWon=false;
 
