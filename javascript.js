@@ -40,7 +40,7 @@ console.log(computerColourChoice);
         //inserire un else if in caso colore presente ma non al posto giusto
             
             } else  if (computerColourChoice.indexOf(userColourChoice[i])!==(-1) && userColourChoice[i]!==computerColourChoice[i]) {
-                console.log(userColourChoice[i] + " is PRESENT but in an NOT in position: " + i);
+                console.log(userColourChoice[i] + " is PRESENT but in an NOT in position: " + (i+1));
 //sistemafre: se colore correct e uno rimette dice coporretto m non in posizione
             }
 
@@ -58,7 +58,14 @@ console.log(computerColourChoice);
     alert("break");
 
 // CHECKING IF IMPUT ARE VALID
+if (placeholderColourMatch[0]===computerColourChoice[0] && 
+    placeholderColourMatch[1]===computerColourChoice[1] && 
+    placeholderColourMatch[2]===computerColourChoice[2] && 
+    placeholderColourMatch[3]===computerColourChoice[3] ) {
+        console.log("congratulation! You Won!!")
+        userHasWon="yes";
 
+    }
 
 
 
