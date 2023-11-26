@@ -37,8 +37,8 @@ console.log(computerColourChoice);
         //inserire un else if in caso colore presente ma non al posto giusto
             
             } else  if (computerColourChoice.indexOf(userColourChoice[i])!==(-1) && userColourChoice[i]!==computerColourChoice[i]) {
-                console.log(userColourChoice[i] + " is present but in an another position");
-
+                console.log(userColourChoice[i] + " is PRESENT but in an NOT in position: " + i);
+//sistemafre: se colore correct e uno rimette dice coporretto m non in posizione
             }
 
         } 
