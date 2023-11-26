@@ -3,7 +3,7 @@ const COLOUR_DATABASE = ["red","yellow", "green", "blue", "pink","white"];
 let computerColourChoice = ["empty-colour","empty-colour","empty-colour","empty-colour"];
 let userColourChoice = new Array(4);
 let placeholderColourMatch= new Array (4);
-let userHasWon= false;
+let userHasWon= "not yet";
 
 for (let i=0; i<computerColourChoice.length; i++) {
 
@@ -16,9 +16,11 @@ alert("***** Welcome at Mastermind *****")
 
 
 //insert while quality test
+// iserrt a if (!usercolouChoice[i]) - meeage input empty or not valid
+console.log(computerColourChoice);
+    console.log(userColourChoice);
+    console.log(placeholderColourMatch);
 
-
-do {
     if (placeholderColourMatch!==computerColourChoice) {
 
         userHasWon=false;
@@ -34,21 +36,24 @@ do {
                 console.log(userColourChoice[i] + " is CORRECT in place n."+ (i+1));
         //inserire un else if in caso colore presente ma non al posto giusto
             
-            } else {
+            } else  if (computerColourChoice.indexOf(userColourChoice[i])!==(-1) && userColourChoice[i]!==computerColourChoice[i]) {
+                console.log(userColourChoice[i] + " is present but in an another position");
 
             }
 
         } 
     } else {
         console.log("congratulation! You Won!!")
-        break;
+        userHasWon="yes";
+        
     }
 
 
     console.log(computerColourChoice);
-    console.log(userColourChoice)
-    console.log(placeholderColourMatch)
-} while ( userHasWon===false);
+    console.log(userColourChoice);
+    console.log(placeholderColourMatch);
+    alert("break");
+
 // CHECKING IF IMPUT ARE VALID
 
 
