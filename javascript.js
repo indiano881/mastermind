@@ -3,7 +3,7 @@ const COLOUR_DATABASE = ["red","yellow", "green", "blue", "pink","white"];
 let computerColourChoice = ["empty-colour","empty-colour","empty-colour","empty-colour"];
 let userColourChoice = new Array(4);
 let placeholderColourMatch= new Array (4);
-let userHasWon= "not yet";
+let userHasWon= false;
 
 for (let i=0; i<computerColourChoice.length; i++) {
 
@@ -17,39 +17,51 @@ alert("***** Welcome at Mastermind *****")
 
 //insert while quality test
 // iserrt a if (!usercolouChoice[i]) - meeage input empty or not valid
-console.log(computerColourChoice);
+//insert// difficulty choiche easy: 20 attempts medium 10  hard 6 mastermind 4
+
     console.log(userColourChoice);
     console.log(placeholderColourMatch);
 
     //inserire 3 livelli con number of guesses
     //chiudere tutto in un for loop?
 
-    if (userHasWon= "not yet") { //ERRORE LOGICO SU COME PARAGONARE UN ARRAY
+do {
 
-        userHasWon=false;
+    for (let i=0; i<userColourChoice.length; i++) {
 
-        for (let i=0; i<userColourChoice.length; i++) {
+        userColourChoice[i]= prompt("Choose within red--yellow--green--blue--pink--white-- at position"+ (i+1) +"/4? \n Your choiche are " +userColourChoice.join("--")).toLocaleLowerCase();
 
-            userColourChoice[i]= prompt("Choose within red--yellow--green--blue--pink--white-- at position"+ (i+1) +"/4? \n Your choiche are " +userColourChoice.join("--")).toLocaleLowerCase();
-    
-        }
-        for (let i=0; i<userColourChoice.length; i++) {
-            if (userColourChoice[i]===computerColourChoice[i]) {
-                placeholderColourMatch[i]=computerColourChoice[i];
-                console.log(userColourChoice[i] + " is CORRECT in place n."+ (i+1));
-        //inserire un else if in caso colore presente ma non al posto giusto
-            
-            } else  if (computerColourChoice.indexOf(userColourChoice[i])!==(-1) && userColourChoice[i]!==computerColourChoice[i]) {
-                console.log(userColourChoice[i] + " is PRESENT but in an NOT in position: " + (i+1));
-//sistemafre: se colore correct e uno rimette dice coporretto m non in posizione
-            }
-
-        } 
-    } else {
-        console.log("congratulation! You Won!!")
-        userHasWon="yes";
-        
     }
+    for (let i=0; i<userColourChoice.length; i++) {
+        if (userColourChoice[i]===computerColourChoice[i]) {
+            placeholderColourMatch[i]=computerColourChoice[i];
+            console.log(userColourChoice[i] + " is CORRECT in place n."+ (i+1));
+    //inserire un else if in caso colore presente ma non al posto giusto
+        
+        } else  if (computerColourChoice.indexOf(userColourChoice[i])!==(-1) && userColourChoice[i]!==computerColourChoice[i]) {
+            console.log(userColourChoice[i] + " is PRESENT but in an NOT in position: " + (i+1));
+//sistemafre: se colore correct e uno rimette dice coporretto m non in posizione
+        }
+
+    } 
+    console.log("**************");
+    if (placeholderColourMatch[0]===computerColourChoice[0] && 
+        placeholderColourMatch[1]===computerColourChoice[1] && 
+        placeholderColourMatch[2]===computerColourChoice[2] && 
+        placeholderColourMatch[3]===computerColourChoice[3] ) {
+            
+            userHasWon=true;
+            console.log("congratulation! You Won!!")
+    
+        } else {
+            userHasWon=false;
+        }
+
+
+} while (userHasWon===false)
+
+        
+    
 
 
     console.log(computerColourChoice);
@@ -58,14 +70,11 @@ console.log(computerColourChoice);
     alert("break");
 
 // CHECKING IF IMPUT ARE VALID
-if (placeholderColourMatch[0]===computerColourChoice[0] && 
-    placeholderColourMatch[1]===computerColourChoice[1] && 
-    placeholderColourMatch[2]===computerColourChoice[2] && 
-    placeholderColourMatch[3]===computerColourChoice[3] ) {
-        console.log("congratulation! You Won!!")
-        userHasWon="yes";
 
-    }
+
+
+//winning system
+
 
 
 
