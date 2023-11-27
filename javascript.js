@@ -7,6 +7,7 @@ let userHasWon= false;
 let difficultyLevelChoiche;
 let runningGameLevelChoiche;
 
+
 for (let i=0; i<computerColourChoice.length; i++) {
 
     computerColourChoice[i]=COLOUR_DATABASE[Math.floor((Math.random()*COLOUR_DATABASE.length))];
@@ -54,19 +55,22 @@ switch (difficultyLevelChoiche) {
 
 //insert while quality test
 // iserrt a if (!usercolouChoice[i]) - meeage input empty or not valid
-//insert// difficulty choiche easy: 20 attempts medium 10  hard 6 mastermind 4
+//inserire alert e console devono essere uguali
+//record database???
+//sistemare colour present
+
 
     console.log(userColourChoice);
     console.log(placeholderColourMatch);
 
-    //inserire 3 livelli con number of guesses
-    //chiudere tutto in un for loop?
+    
+   
 
 do {
 
     for (let i=0; i<userColourChoice.length; i++) {
 
-        userColourChoice[i]= prompt("Choose within red--yellow--green--blue--pink--white-- at position"+ (i+1) +"/4? \n Your choiche are " +userColourChoice.join("--")).toLocaleLowerCase();
+        userColourChoice[i]= prompt("Choose within: \n red--yellow--green--blue--pink--white-- \n at position "+ (i+1) +"/4? \n Your choiches are ==> " +userColourChoice.join("--") + "\n You have" + runningGameLevelChoiche+ " max attempts left" ).toLocaleLowerCase();
 
     }
     for (let i=0; i<userColourChoice.length; i++) {
@@ -81,7 +85,12 @@ do {
         }
 
     } 
+
+
     console.log("**************");
+
+    runningGameLevelChoiche--;
+
     if (placeholderColourMatch[0]===computerColourChoice[0] && 
         placeholderColourMatch[1]===computerColourChoice[1] && 
         placeholderColourMatch[2]===computerColourChoice[2] && 
@@ -90,6 +99,10 @@ do {
             userHasWon=true;
             console.log("congratulation! You Won!!")
     
+        } else  if (runningGameLevelChoiche===0) {
+            userHasWon=false;
+            alert ("Sorry you lost!")
+            break;
         } else {
             userHasWon=false;
         }
