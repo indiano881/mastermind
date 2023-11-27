@@ -19,8 +19,7 @@ alert("***** Welcome at Mastermind *****")
 
 alert("*****Istructions: guess the colours the computer has choosen. *****\n ***** Same colours can be desplayed MORE than one time *****");
 //double pipeline to check input or cancel button, maybe a do while loop????
-difficultyLevelChoiche=prompt("Choose a level within: \n easy (max 20 attempts) \n medium (max 12 attempts) \n hard (max 8 attempts) \n mastermind (max 5 attempts)").toLocaleLowerCase();
-
+/*
 switch (difficultyLevelChoiche) {
     case "easy":
         runningGameLevelChoiche=20;
@@ -38,6 +37,36 @@ switch (difficultyLevelChoiche) {
     default:
         alert("Sorry Input EMPTY or NOT VALID");
 }
+*/
+while (!difficultyLevelChoiche || 
+    difficultyLevelChoiche!=="easy" &&
+    difficultyLevelChoiche!=="medium" &&
+    difficultyLevelChoiche!=="hard" &&
+    difficultyLevelChoiche!=="mastermind" ) {
+
+    alert("Sorry Input EMPTY or NOT VALID");
+    difficultyLevelChoiche=prompt("Choose a level within: \n easy (max 20 attempts) \n medium (max 12 attempts) \n hard (max 8 attempts) \n mastermind (max 5 attempts)");
+
+} 
+
+    switch (difficultyLevelChoiche) {
+        case "easy":
+            runningGameLevelChoiche=20;
+            break;
+        case "medium":
+            runningGameLevelChoiche=12;
+            break;
+        case "hard":
+            runningGameLevelChoiche=8;
+            break;
+        case "mastermind":
+            runningGameLevelChoiche=5;
+            //possible to add a colour to a CONST????
+            break;
+        default:
+            break;
+    }
+    
 
 
 
@@ -72,7 +101,7 @@ do {
 
         userColourChoice[i]= prompt("Choose within: \n red--yellow--green--blue--pink--white-- \n at position "+ 
                             (i+1) +"/4? \n Your choiches are ==> " +userColourChoice.join("--") +
-                            "\n You have" + runningGameLevelChoiche+ " max attempts left" ).toLocaleLowerCase();
+                            "\n You have " + runningGameLevelChoiche+ " max attempts left" );
 
     }
     for (let i=0; i<userColourChoice.length; i++) {
