@@ -103,11 +103,17 @@ do {
                             (i+1) +"/4? \n Your choiches are ==> " +userColourChoice.join("--") +
                             "\n You have " + runningGameLevelChoiche+ " max attempts left" );
 
-    }
-    for (let i=0; i<userColourChoice.length; i++) {
 
-        if (userColourChoice[i]===computerColourChoice[i]) {
+        if (!userColourChoice[i] || 
+            userColourChoice[i]!=="red" && 
+            userColourChoice[i]!=="yellow" &&
+            userColourChoice[i]!=="green" &&
+            userColourChoice[i]!=="blue" &&
+            userColourChoice[i]!=="pink" &&
+            userColourChoice[i]!=="white") {
+                alert("Sorry Input EMPTY or NOT VALID");
 
+        } else if (userColourChoice[i]===computerColourChoice[i]) {
             placeholderColourMatch[i]=computerColourChoice[i];
             console.log(userColourChoice[i] + " is CORRECT in place n."+ (i+1));
     //inserire un else if in caso colore presente ma non al posto giusto
@@ -117,8 +123,8 @@ do {
             console.log(userColourChoice[i] + " is PRESENT but in an NOT in position: " + (i+1));
 //sistemafre: se colore correct e uno rimette dice coporretto m non in posizione
         }
-
-    } 
+    }
+    
 
 
     console.log("**************");
