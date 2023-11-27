@@ -4,6 +4,8 @@ let computerColourChoice = ["empty-colour","empty-colour","empty-colour","empty-
 let userColourChoice = new Array(4);
 let placeholderColourMatch= new Array (4);
 let userHasWon= false;
+let difficultyLevelChoiche;
+let runningGameLevelChoiche;
 
 for (let i=0; i<computerColourChoice.length; i++) {
 
@@ -13,6 +15,41 @@ for (let i=0; i<computerColourChoice.length; i++) {
 
 //user: welcome and choiche of coulurs
 alert("***** Welcome at Mastermind *****")
+
+alert("*****Istructions: guess the colours the computer has choosen. *****\n ***** Same colours can be desplayed MORE than one time *****");
+
+difficultyLevelChoiche=prompt("Choose a level within: \n easy (max 20 attempts) \n medium (max 12 attempts) \n hard (max 8 attempts) \n mastermind (max 5 attempts)").toLocaleLowerCase();
+
+switch (difficultyLevelChoiche) {
+    case "easy":
+        runningGameLevelChoiche=20;
+        break;
+    case "medium":
+        runningGameLevelChoiche=12;
+        break;
+    case "hard":
+        runningGameLevelChoiche=8;
+        break;
+    case "mastermind":
+        runningGameLevelChoiche=5;
+        //possible to add a colour to a CONST????
+        break;
+    default:
+        alert("Sorry Input EMPTY or NOT VALID");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //insert while quality test
