@@ -18,7 +18,7 @@ for (let i=0; i<computerColourChoice.length; i++) {
 alert("***** Welcome at Mastermind *****")
 
 alert("*****Istructions: guess the colours the computer has choosen. *****\n ***** Same colours can be desplayed MORE than one time *****");
-
+//double pipeline to check input or cancel button, maybe a do while loop????
 difficultyLevelChoiche=prompt("Choose a level within: \n easy (max 20 attempts) \n medium (max 12 attempts) \n hard (max 8 attempts) \n mastermind (max 5 attempts)").toLocaleLowerCase();
 
 switch (difficultyLevelChoiche) {
@@ -70,16 +70,21 @@ do {
 
     for (let i=0; i<userColourChoice.length; i++) {
 
-        userColourChoice[i]= prompt("Choose within: \n red--yellow--green--blue--pink--white-- \n at position "+ (i+1) +"/4? \n Your choiches are ==> " +userColourChoice.join("--") + "\n You have" + runningGameLevelChoiche+ " max attempts left" ).toLocaleLowerCase();
+        userColourChoice[i]= prompt("Choose within: \n red--yellow--green--blue--pink--white-- \n at position "+ 
+                            (i+1) +"/4? \n Your choiches are ==> " +userColourChoice.join("--") +
+                            "\n You have" + runningGameLevelChoiche+ " max attempts left" ).toLocaleLowerCase();
 
     }
     for (let i=0; i<userColourChoice.length; i++) {
+
         if (userColourChoice[i]===computerColourChoice[i]) {
+
             placeholderColourMatch[i]=computerColourChoice[i];
             console.log(userColourChoice[i] + " is CORRECT in place n."+ (i+1));
     //inserire un else if in caso colore presente ma non al posto giusto
         
         } else  if (computerColourChoice.indexOf(userColourChoice[i])!==(-1) && userColourChoice[i]!==computerColourChoice[i]) {
+
             console.log(userColourChoice[i] + " is PRESENT but in an NOT in position: " + (i+1));
 //sistemafre: se colore correct e uno rimette dice coporretto m non in posizione
         }
