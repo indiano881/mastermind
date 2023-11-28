@@ -19,7 +19,7 @@ for (let i=0; i<computerColourChoice.length; i++) {
 const displayAlertWrongInput = () => alert("Sorry Input EMPTY or NOT VALID");
 
 
-
+console.log(computerColourChoice);
 //user: welcome and choiche of coulurs
 alert("***** Welcome at Mastermind *****");
 
@@ -93,27 +93,23 @@ do {
         for (let i=0; i<userColourChoice.length; i++) {
             
             } if (userColourChoice[i]===computerColourChoice[i]) {
+
                 placeholderColourMatch[i]=computerColourChoice[i];
                 console.log(userColourChoice[i] + " is CORRECT in place n."+ (i+1));
-                
                 messages[i]=(userColourChoice[i] + " is CORRECT in place n."+ (i+1));
         
-            
             } else  if (computerColourChoice.indexOf(userColourChoice[i])!==(-1) && userColourChoice[i]!==computerColourChoice[i]) {
     
-                console.log(userColourChoice[i] + " is PRESENT but in an NOT in position: " + (i+1));
-                
-                messages[i]=(userColourChoice[i] + " is PRESENT but in an NOT in position: " + (i+1));
+                console.log(userColourChoice[i] + " is PRESENT but not in position: " + (i+1));
+                messages[i]=(userColourChoice[i] + " is PRESENT but not in position: " + (i+1));
     
             } else {
-                //add smthing?
+                messages[i]=(userColourChoice[i] + " is NOT part of solution");
             }
-            
-        
-        
     }
-    alert(messages.join("--"));
+    alert(messages.join(" ==> "));
     //insert clean up messages
+    console.log(messages);
     console.log("**************");
     runningGameLevelChoiche--;
 
@@ -133,11 +129,6 @@ do {
 
 } while (userHasWon===false)
 
-
-    console.log(computerColourChoice);
-    console.log(userColourChoice);
-    console.log(placeholderColourMatch);
-    alert("END");
 
 /*
 
