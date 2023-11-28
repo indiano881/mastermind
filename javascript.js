@@ -18,7 +18,7 @@ console.log(computerColourChoice);
 //user: welcome and choiche of coulurs
 alert("***** Welcome at Mastermind *****");
 
-alert("*****Istructions: guess the 4 colours the computer has choosen. *****\n ***** Choose within: --red--yellow--green--blue--pink--white-- ****** \n***** Same colours can be desplayed MORE than one time *****");
+alert("*****Instructions: guess the 4 colours the computer has choosen. *****\n ***** Choose within: --red--yellow--green--blue--pink--white-- ****** \n***** Same colours can be desplayed MORE than one time *****");
 
 do {
     difficultyLevelChoiche=prompt("Choose a level within: \n easy (max 20 attempts) \n medium (max 12 attempts) \n hard (max 8 attempts) \n mastermind (max 5 attempts)");
@@ -81,22 +81,20 @@ do {
             userColourChoice[i]!=="pink" &&
             userColourChoice[i]!=="white")
 
-        for (let i=0; i<userColourChoice.length; i++) {
-            
-            } if (userColourChoice[i]===computerColourChoice[i]) {
+        if (userColourChoice[i]===computerColourChoice[i]) {
 
                 console.log(userColourChoice[i] + " is CORRECT in place n."+ (i+1));
                 messages[i]=(userColourChoice[i] + " is CORRECT in place n."+ (i+1));
         
-            } else  if (computerColourChoice.indexOf(userColourChoice[i])!==(-1) && userColourChoice[i]!==computerColourChoice[i]) {
-    
+        } else  if (computerColourChoice.indexOf(userColourChoice[i])!==(-1) && userColourChoice[i]!==computerColourChoice[i]) {
+    //qui un for loop?
                 console.log(userColourChoice[i] + " is PRESENT but not in position: " + (i+1));
                 messages[i]=(userColourChoice[i] + " is PRESENT but not in position: " + (i+1));
     
-            } else {
+        } else {
                 console.log(userColourChoice[i] + " is NOT part of solution");
                 messages[i]=(userColourChoice[i] + " is NOT part of solution");
-            }
+        }
     }
 
     alert(messages.join(" ==> "));
