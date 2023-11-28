@@ -7,14 +7,14 @@ let userHasWon= false;
 let difficultyLevelChoiche;
 let runningGameLevelChoiche;
 
-const computerColourGenerator = () =>{
 
-    for (let i=0; i<computerColourChoice.length; i++) {
 
-        return computerColourChoice[i]=COLOUR_DATABASE[Math.floor((Math.random()*COLOUR_DATABASE.length))];
-    }    
-}
+for (let i=0; i<computerColourChoice.length; i++) {
 
+    computerColourChoice[i]=COLOUR_DATABASE[Math.floor((Math.random()*COLOUR_DATABASE.length))];
+}    
+
+alert(computerColourChoice);
 const displayAlertWrongInput = () => alert("Sorry Input EMPTY or NOT VALID");
 
 
@@ -22,7 +22,7 @@ const displayAlertWrongInput = () => alert("Sorry Input EMPTY or NOT VALID");
 //user: welcome and choiche of coulurs
 alert("***** Welcome at Mastermind *****");
 
-alert("*****Istructions: guess the colours the computer has choosen. *****\n ***** Same colours can be desplayed MORE than one time *****");
+alert("*****Istructions: guess the 4 colours the computer has choosen. *****\n ***** Choose within: --red--yellow--green--blue--pink--white-- ****** \n***** Same colours can be desplayed MORE than one time *****");
 
 do {
     difficultyLevelChoiche=prompt("Choose a level within: \n easy (max 20 attempts) \n medium (max 12 attempts) \n hard (max 8 attempts) \n mastermind (max 5 attempts)");
@@ -69,8 +69,7 @@ switch (difficultyLevelChoiche) {
     console.log(userColourChoice);
     console.log(placeholderColourMatch);
 
-    
-   
+
 
 do {
 
@@ -79,28 +78,33 @@ do {
         userColourChoice[i]= prompt("Choose within: \n red--yellow--green--blue--pink--white-- \n at position "+ 
                             (i+1) +"/4? \n Your choiches are ==> " +userColourChoice.join("--") +
                             "\n You have " + runningGameLevelChoiche+ " max attempts left" );
-
-
         if (!userColourChoice[i] || 
-            userColourChoice[i]!=="red" && 
-            userColourChoice[i]!=="yellow" &&
-            userColourChoice[i]!=="green" &&
-            userColourChoice[i]!=="blue" &&
-            userColourChoice[i]!=="pink" &&
-            userColourChoice[i]!=="white") {
-                displayAlertWrongInput();
-                break;
-
-        } else if (userColourChoice[i]===computerColourChoice[i]) {
-            placeholderColourMatch[i]=computerColourChoice[i];
-            console.log(userColourChoice[i] + " is CORRECT in place n."+ (i+1));
-    //inserire un else if in caso colore presente ma non al posto giusto
-        
-        } else  if (computerColourChoice.indexOf(userColourChoice[i])!==(-1) && userColourChoice[i]!==computerColourChoice[i]) {
-
-            console.log(userColourChoice[i] + " is PRESENT but in an NOT in position: " + (i+1));
-//sistemafre: se colore correct e uno rimette dice coporretto m non in posizione
+        userColourChoice[i]!=="red" && 
+        userColourChoice[i]!=="yellow" &&
+        userColourChoice[i]!=="green" &&
+        userColourChoice[i]!=="blue" &&
+        userColourChoice[i]!=="pink" &&
+        userColourChoice[i]!=="white") {
+        displayAlertWrongInput();
         }
+        for (let i=0; i<userColourChoice.length; i++) {
+            
+            } if (userColourChoice[i]===computerColourChoice[i]) {
+                placeholderColourMatch[i]=computerColourChoice[i];
+                console.log(userColourChoice[i] + " is CORRECT in place n."+ (i+1));
+                alert(userColourChoice[i] + " is CORRECT in place n."+ (i+1));
+        
+            
+            } else  if (computerColourChoice.indexOf(userColourChoice[i])!==(-1) && userColourChoice[i]!==computerColourChoice[i]) {
+    
+                console.log(userColourChoice[i] + " is PRESENT but in an NOT in position: " + (i+1));
+                alert(userColourChoice[i] + " is PRESENT but in an NOT in position: " + (i+1));
+    
+            } else {
+                alert("no matches yet");
+            }
+        
+        
     }
     
     console.log("**************");
@@ -122,19 +126,13 @@ do {
             userHasWon=false;
         }
 
-
 } while (userHasWon===false)
-
-        
-    
 
 
     console.log(computerColourChoice);
     console.log(userColourChoice);
     console.log(placeholderColourMatch);
     alert("END");
-
-
 
 /*
 
