@@ -3,6 +3,7 @@ const COLOUR_DATABASE = ["red","yellow", "green", "blue", "pink","white"];
 let computerColourChoice = ["empty-colour","empty-colour","empty-colour","empty-colour"]; //fix this new array(4)???
 let userColourChoice = new Array(4);
 let placeholderColourMatch= new Array (4);
+let messages= new Array (4);
 let userHasWon= false;
 let difficultyLevelChoiche;
 let runningGameLevelChoiche;
@@ -14,7 +15,7 @@ for (let i=0; i<computerColourChoice.length; i++) {
     computerColourChoice[i]=COLOUR_DATABASE[Math.floor((Math.random()*COLOUR_DATABASE.length))];
 }    
 
-alert(computerColourChoice);
+
 const displayAlertWrongInput = () => alert("Sorry Input EMPTY or NOT VALID");
 
 
@@ -75,9 +76,11 @@ do {
 
     for (let i=0; i<userColourChoice.length; i++) {
 
-        userColourChoice[i]= prompt("Choose within: \n red--yellow--green--blue--pink--white-- \n at position "+ 
-                            (i+1) +"/4? \n Your choiches are ==> " +userColourChoice.join("--") +
-                            "\n You have " + runningGameLevelChoiche+ " max attempts left" );
+        userColourChoice[i]= prompt("Choose within: \n red--yellow--green--blue--pink--white-- \n at position:\n "+ 
+                            (i+1) +"/4 \n Your choiches are ==>\n " +userColourChoice.join("--") +
+                            "\n You have " + runningGameLevelChoiche+ " max attempts left!\n" +
+                            "----------");
+
         if (!userColourChoice[i] || 
         userColourChoice[i]!=="red" && 
         userColourChoice[i]!=="yellow" &&
@@ -92,39 +95,41 @@ do {
             } if (userColourChoice[i]===computerColourChoice[i]) {
                 placeholderColourMatch[i]=computerColourChoice[i];
                 console.log(userColourChoice[i] + " is CORRECT in place n."+ (i+1));
-                alert(userColourChoice[i] + " is CORRECT in place n."+ (i+1));
+                
+                messages[i]=(userColourChoice[i] + " is CORRECT in place n."+ (i+1));
         
             
             } else  if (computerColourChoice.indexOf(userColourChoice[i])!==(-1) && userColourChoice[i]!==computerColourChoice[i]) {
     
                 console.log(userColourChoice[i] + " is PRESENT but in an NOT in position: " + (i+1));
-                alert(userColourChoice[i] + " is PRESENT but in an NOT in position: " + (i+1));
+                
+                messages[i]=(userColourChoice[i] + " is PRESENT but in an NOT in position: " + (i+1));
     
             } else {
-                alert("no matches yet");
+                //add smthing?
             }
+            
         
         
     }
-    
+    alert(messages.join("--"));
+    //insert clean up messages
     console.log("**************");
     runningGameLevelChoiche--;
 
     if (placeholderColourMatch[0]===computerColourChoice[0] && 
         placeholderColourMatch[1]===computerColourChoice[1] && 
         placeholderColourMatch[2]===computerColourChoice[2] && 
-        placeholderColourMatch[3]===computerColourChoice[3] ) {
+        placeholderColourMatch[3]===computerColourChoice[3] ) {//necessario placeholder???
             
-            userHasWon=true;
-            console.log("congratulation! You Won!!")
-    
-        } else  if (runningGameLevelChoiche===0) {
-            userHasWon=false;
-            alert ("Sorry you lost!")
-            break;
-        } else {
-            userHasWon=false;
-        }
+        userHasWon=true;
+        console.log("congratulation! You Won!!")
+        alert("Congratulation you won!!!!")
+    } else  if (runningGameLevelChoiche===0) {
+        userHasWon=false;
+        alert ("Sorry you lost!")
+        break;
+    }
 
 } while (userHasWon===false)
 
