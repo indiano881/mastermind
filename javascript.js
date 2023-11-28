@@ -1,8 +1,7 @@
-
+//SISTEMARE COLOUR PRESENT????
 const COLOUR_DATABASE = ["red","yellow", "green", "blue", "pink","white"];
 let computerColourChoice = ["empty-colour","empty-colour","empty-colour","empty-colour"]; //fix this new array(4)???
 let userColourChoice = new Array(4);
-let placeholderColourMatch= new Array (4);
 let messages= new Array (4);
 let userHasWon= false;
 let difficultyLevelChoiche;
@@ -56,7 +55,6 @@ switch (difficultyLevelChoiche) {
 }
 
     console.log(userColourChoice);
-    console.log(placeholderColourMatch);
 
 do {
 
@@ -87,7 +85,6 @@ do {
             
             } if (userColourChoice[i]===computerColourChoice[i]) {
 
-                placeholderColourMatch[i]=computerColourChoice[i];
                 console.log(userColourChoice[i] + " is CORRECT in place n."+ (i+1));
                 messages[i]=(userColourChoice[i] + " is CORRECT in place n."+ (i+1));
         
@@ -108,19 +105,19 @@ do {
     console.log("**************");
     runningGameLevelChoiche--;
 
-    if (placeholderColourMatch[0]===computerColourChoice[0] && 
-        placeholderColourMatch[1]===computerColourChoice[1] && 
-        placeholderColourMatch[2]===computerColourChoice[2] && 
-        placeholderColourMatch[3]===computerColourChoice[3] ) {//necessario placeholder???
-            
+    if (userColourChoice[0]===computerColourChoice[0] && 
+        userColourChoice[1]===computerColourChoice[1] && 
+        userColourChoice[2]===computerColourChoice[2] && 
+        userColourChoice[3]===computerColourChoice[3] ) {
+
         userHasWon=true;
-        console.log("congratulation! You Won!!")
-        alert("Congratulation you won!!!!")
+        console.log("congratulation! You Won!!");
+        alert("Congratulation you won!!!!");
 
     } else  if (runningGameLevelChoiche===0) {
 
         userHasWon=false;
-        alert ("Sorry you lost!")
+        alert ("Sorry you lost!");
         break;
     }
 
@@ -141,22 +138,22 @@ The game only needs to run via prompts and alerts - an external JS file loaded i
 An understating of fundamental vanilla JS concepts is what you will be graded on, how it looks is irrelevant and will not be assessed
 
 To achieve a Godkänt grade, your game must include:
-One or more constants
-One or more arrays
-A random selection of an array index
-A dynamic assignment of a variable (ie using prompt)
-One or more while loops
-One or more for loops
-Comparison with user entered data
-A final won/lost message. User input MUST be the determining factor in whether the user wins or loses
+One or more constants OK
+One or more arrays OK
+A random selection of an array index OK
+A dynamic assignment of a variable (ie using prompt) OK
+One or more while loops OK
+One or more for loops OK
+Comparison with user entered data OK
+A final won/lost message. User input MUST be the determining factor in whether the user wins or loses OK
 
 To achieve Väl Godkänt grade, your game must include the above and:
-Comparison with an array - ie comparing user input to what is stored within an array.
-Nested logic. Loops within loops. This kind of abstracted thinking is a daily occurrence in programming.
-Input validation (eg if its a Wordle or Hangman type game only letters are valid input)
-Cancel Button handling
-Semantic variable naming
-Consistent code style
-Logical use of conditionals.
+Comparison with an array - ie comparing user input to what is stored within an array. OK
+Nested logic. Loops within loops. This kind of abstracted thinking is a daily occurrence in programming. OK
+Input validation (eg if its a Wordle or Hangman type game only letters are valid input) OK
+Cancel Button handling OK
+Semantic variable naming OK
+Consistent code style OK
+Logical use of conditionals. OK
 
 */
