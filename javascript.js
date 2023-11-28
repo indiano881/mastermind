@@ -1,6 +1,6 @@
 
 const COLOUR_DATABASE = ["red","yellow", "green", "blue", "pink","white"];
-let computerColourChoice = ["empty-colour","empty-colour","empty-colour","empty-colour"];
+let computerColourChoice = ["empty-colour","empty-colour","empty-colour","empty-colour"]; //fix this new array(4)???
 let userColourChoice = new Array(4);
 let placeholderColourMatch= new Array (4);
 let userHasWon= false;
@@ -23,30 +23,10 @@ const displayAlertWrongInput = () => alert("Sorry Input EMPTY or NOT VALID");
 alert("***** Welcome at Mastermind *****");
 
 alert("*****Istructions: guess the colours the computer has choosen. *****\n ***** Same colours can be desplayed MORE than one time *****");
-//double pipeline to check input or cancel button, maybe a do while loop????
-/*
-switch (difficultyLevelChoiche) {
-    case "easy":
-        runningGameLevelChoiche=20;
-        break;
-    case "medium":
-        runningGameLevelChoiche=12;
-        break;
-    case "hard":
-        runningGameLevelChoiche=8;
-        break;
-    case "mastermind":
-        runningGameLevelChoiche=5;
-        //possible to add a colour to a CONST????
-        break;
-    default:
-        alert("Sorry Input EMPTY or NOT VALID");
-}
-*/
-do {
 
-    
+do {
     difficultyLevelChoiche=prompt("Choose a level within: \n easy (max 20 attempts) \n medium (max 12 attempts) \n hard (max 8 attempts) \n mastermind (max 5 attempts)");
+
     if(!difficultyLevelChoiche || 
         difficultyLevelChoiche!=="easy" &&
         difficultyLevelChoiche!=="medium" &&
@@ -61,39 +41,22 @@ do {
     difficultyLevelChoiche!=="hard" &&
     difficultyLevelChoiche!=="mastermind" ) 
 
-    switch (difficultyLevelChoiche) {
-        case "easy":
-            runningGameLevelChoiche=20;
-            break;
-        case "medium":
-            runningGameLevelChoiche=12;
-            break;
-        case "hard":
-            runningGameLevelChoiche=8;
-            break;
-        case "mastermind":
-            runningGameLevelChoiche=5;
-            //possible to add a colour to a CONST????
-            break;
-        default:
-            break;
-    }
-    
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
+switch (difficultyLevelChoiche) {
+    case "easy":
+        runningGameLevelChoiche=20;
+        break;
+    case "medium":
+        runningGameLevelChoiche=12;
+        break;
+    case "hard":
+        runningGameLevelChoiche=8;
+        break;
+    case "mastermind":
+        runningGameLevelChoiche=5;
+        break;
+    default:
+        break;
+}
 
 
 //insert while quality test
@@ -125,7 +88,8 @@ do {
             userColourChoice[i]!=="blue" &&
             userColourChoice[i]!=="pink" &&
             userColourChoice[i]!=="white") {
-                alert("Sorry Input EMPTY or NOT VALID");
+                displayAlertWrongInput();
+                break;
 
         } else if (userColourChoice[i]===computerColourChoice[i]) {
             placeholderColourMatch[i]=computerColourChoice[i];
@@ -139,10 +103,7 @@ do {
         }
     }
     
-
-
     console.log("**************");
-
     runningGameLevelChoiche--;
 
     if (placeholderColourMatch[0]===computerColourChoice[0] && 
@@ -171,28 +132,11 @@ do {
     console.log(computerColourChoice);
     console.log(userColourChoice);
     console.log(placeholderColourMatch);
-    alert("break");
-
-// CHECKING IF IMPUT ARE VALID
-
-
-
-//winning system
-
-
-
-
-
-
+    alert("END");
 
 
 
 /*
-
-
-
-
-
 
 Instructions
 In this assignment we will create a Text Based JavaScript Game
