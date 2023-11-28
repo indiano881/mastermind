@@ -8,16 +8,12 @@ let userHasWon= false;
 let difficultyLevelChoiche;
 let runningGameLevelChoiche;
 
-
-
 for (let i=0; i<computerColourChoice.length; i++) {
 
     computerColourChoice[i]=COLOUR_DATABASE[Math.floor((Math.random()*COLOUR_DATABASE.length))];
 }    
 
-
 const displayAlertWrongInput = () => alert("Sorry Input EMPTY or NOT VALID");
-
 
 console.log(computerColourChoice);
 //user: welcome and choiche of coulurs
@@ -59,37 +55,34 @@ switch (difficultyLevelChoiche) {
         break;
 }
 
-
-//insert while quality test
-// iserrt a if (!usercolouChoice[i]) - meeage input empty or not valid
-//inserire alert e console devono essere uguali
-//record database???
-//sistemare colour present
-
-
     console.log(userColourChoice);
     console.log(placeholderColourMatch);
-
-
 
 do {
 
     for (let i=0; i<userColourChoice.length; i++) {
+        do {
+            userColourChoice[i]= prompt("Choose within: \n red--yellow--green--blue--pink--white-- \n at position:\n "+ 
+            (i+1) +"/4 \n Your choiches are ==>\n " +userColourChoice.join("--") +
+            "\n You have " + runningGameLevelChoiche+ " max attempts left!\n" +
+            "----------");
+            if (!userColourChoice[i] || 
+                userColourChoice[i]!=="red" && 
+                userColourChoice[i]!=="yellow" &&
+                userColourChoice[i]!=="green" &&
+                userColourChoice[i]!=="blue" &&
+                userColourChoice[i]!=="pink" &&
+                userColourChoice[i]!=="white") {
+                    displayAlertWrongInput();
+                }
+        } while (!userColourChoice[i] || 
+            userColourChoice[i]!=="red" && 
+            userColourChoice[i]!=="yellow" &&
+            userColourChoice[i]!=="green" &&
+            userColourChoice[i]!=="blue" &&
+            userColourChoice[i]!=="pink" &&
+            userColourChoice[i]!=="white")
 
-        userColourChoice[i]= prompt("Choose within: \n red--yellow--green--blue--pink--white-- \n at position:\n "+ 
-                            (i+1) +"/4 \n Your choiches are ==>\n " +userColourChoice.join("--") +
-                            "\n You have " + runningGameLevelChoiche+ " max attempts left!\n" +
-                            "----------");
-
-        if (!userColourChoice[i] || 
-        userColourChoice[i]!=="red" && 
-        userColourChoice[i]!=="yellow" &&
-        userColourChoice[i]!=="green" &&
-        userColourChoice[i]!=="blue" &&
-        userColourChoice[i]!=="pink" &&
-        userColourChoice[i]!=="white") {
-        displayAlertWrongInput();
-        }
         for (let i=0; i<userColourChoice.length; i++) {
             
             } if (userColourChoice[i]===computerColourChoice[i]) {
@@ -104,11 +97,13 @@ do {
                 messages[i]=(userColourChoice[i] + " is PRESENT but not in position: " + (i+1));
     
             } else {
+                console.log(userColourChoice[i] + " is NOT part of solution");
                 messages[i]=(userColourChoice[i] + " is NOT part of solution");
             }
     }
+
     alert(messages.join(" ==> "));
-    //insert clean up messages
+    
     console.log(messages);
     console.log("**************");
     runningGameLevelChoiche--;
@@ -121,7 +116,9 @@ do {
         userHasWon=true;
         console.log("congratulation! You Won!!")
         alert("Congratulation you won!!!!")
+
     } else  if (runningGameLevelChoiche===0) {
+
         userHasWon=false;
         alert ("Sorry you lost!")
         break;
@@ -153,8 +150,6 @@ One or more for loops
 Comparison with user entered data
 A final won/lost message. User input MUST be the determining factor in whether the user wins or loses
 
-An example of a Godkänt game would be sten, sax, påse vs the computer in a best of 5 competition. 
-
 To achieve Väl Godkänt grade, your game must include the above and:
 Comparison with an array - ie comparing user input to what is stored within an array.
 Nested logic. Loops within loops. This kind of abstracted thinking is a daily occurrence in programming.
@@ -164,5 +159,4 @@ Semantic variable naming
 Consistent code style
 Logical use of conditionals.
 
-An example of a Väl Godkänt game would be a game similar to Hangman. To complete a game like that the index of an array that contains a specific letter must be displayed to the user.
 */
