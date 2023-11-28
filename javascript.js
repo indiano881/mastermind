@@ -7,15 +7,20 @@ let userHasWon= false;
 let difficultyLevelChoiche;
 let runningGameLevelChoiche;
 
+const computerColourGenerator = () =>{
 
-for (let i=0; i<computerColourChoice.length; i++) {
+    for (let i=0; i<computerColourChoice.length; i++) {
 
-    computerColourChoice[i]=COLOUR_DATABASE[Math.floor((Math.random()*COLOUR_DATABASE.length))];
+        return computerColourChoice[i]=COLOUR_DATABASE[Math.floor((Math.random()*COLOUR_DATABASE.length))];
+    }    
 }
+
+const displayAlertWrongInput = () => alert("Sorry Input EMPTY or NOT VALID");
+
 
 
 //user: welcome and choiche of coulurs
-alert("***** Welcome at Mastermind *****")
+alert("***** Welcome at Mastermind *****");
 
 alert("*****Istructions: guess the colours the computer has choosen. *****\n ***** Same colours can be desplayed MORE than one time *****");
 //double pipeline to check input or cancel button, maybe a do while loop????
@@ -38,16 +43,23 @@ switch (difficultyLevelChoiche) {
         alert("Sorry Input EMPTY or NOT VALID");
 }
 */
-while (!difficultyLevelChoiche || 
+do {
+
+    
+    difficultyLevelChoiche=prompt("Choose a level within: \n easy (max 20 attempts) \n medium (max 12 attempts) \n hard (max 8 attempts) \n mastermind (max 5 attempts)");
+    if(!difficultyLevelChoiche || 
+        difficultyLevelChoiche!=="easy" &&
+        difficultyLevelChoiche!=="medium" &&
+        difficultyLevelChoiche!=="hard" &&
+        difficultyLevelChoiche!=="mastermind" ) {
+            displayAlertWrongInput();
+        }
+
+} while (!difficultyLevelChoiche || 
     difficultyLevelChoiche!=="easy" &&
     difficultyLevelChoiche!=="medium" &&
     difficultyLevelChoiche!=="hard" &&
-    difficultyLevelChoiche!=="mastermind" ) {
-
-    alert("Sorry Input EMPTY or NOT VALID");
-    difficultyLevelChoiche=prompt("Choose a level within: \n easy (max 20 attempts) \n medium (max 12 attempts) \n hard (max 8 attempts) \n mastermind (max 5 attempts)");
-
-} 
+    difficultyLevelChoiche!=="mastermind" ) 
 
     switch (difficultyLevelChoiche) {
         case "easy":
@@ -66,6 +78,8 @@ while (!difficultyLevelChoiche ||
         default:
             break;
     }
+    
+
     
 
 
