@@ -64,11 +64,11 @@ do {
 
             if (!userColourChoice[i]) {
                     displayAlertWrongInput("To quit the game exit or refresh page!");
-                } else if (COLOUR_DATABASE.includes(userColourChoice)===false) {
+                } else if (COLOUR_DATABASE.includes(userColourChoice[i])===false) {
                     displayAlertWrongInput("Valid inputs are: \nred yellow green blue pink white \nInputs are case sensitive");
                 }
 
-        } while (!userColourChoice[i] || COLOUR_DATABASE.includes(userColourChoice)===false)
+        } while (!userColourChoice[i] || COLOUR_DATABASE.includes(userColourChoice[i])===false)
 
         if (userColourChoice[i]===computerColourChoice[i]) {
 
