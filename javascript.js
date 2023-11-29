@@ -2,15 +2,16 @@
 const COLOUR_DATABASE = ["red","yellow", "green", "blue", "pink","white"];
 const LEVELS_DATABASE = ["easy","medium","hard","mastermind"];
 let copy_COLOUR_DATABASE= Array.from(COLOUR_DATABASE);
-let copy_two_COLOUR_DATABASE= Array.from(COLOUR_DATABASE);
 let computerColourChoice = new Array (4); ;
 let userColourChoice = new Array(4);
 let messages= new Array (4);
+let messagesCollector=[];
 //variables
 let removeColourIndex;
 let userHasWon= false;
 let difficultyLevelChoiche;
 let runningGameLevelChoiche;
+let roundCounter=1;
 //functions
 const displayAlertWrongInput = (alertString = "") => alert(`Sorry Input NOT VALID ${alertString} `);
 
@@ -58,7 +59,6 @@ for (let i = 0; i < computerColourChoice.length; i++) {
     computerColourChoice[i] = copy_COLOUR_DATABASE.splice(removeColourIndex, 1)[0];
 }
 
-alert(computerColourChoice);
 
 do {
 
@@ -74,7 +74,7 @@ do {
             if (!userColourChoice[i]) {
                     displayAlertWrongInput("To quit the game exit or refresh page!");
                 } else if (COLOUR_DATABASE.includes(userColourChoice[i])===false) {
-                    displayAlertWrongInput("Valid inputs are: \nred yellow green blue pink white \nInputs are case sensitive");
+                    displayAlertWrongInput("Valid inputs are: \n"+COLOUR_DATABASE.join(" ")+"\nInputs are case sensitive");
                 }
 
         } while (!userColourChoice[i] || COLOUR_DATABASE.includes(userColourChoice[i])===false)
@@ -83,6 +83,7 @@ do {
 
                 console.log(userColourChoice[i] + " is CORRECT in place n."+ (i+1));
                 messages[i]=(userColourChoice[i] + " is CORRECT in place n."+ (i+1));
+                
         
         } else  if (computerColourChoice.indexOf(userColourChoice[i])!==(-1) && userColourChoice[i]!==computerColourChoice[i]) {
     
@@ -93,13 +94,18 @@ do {
                 console.log(userColourChoice[i] + " is NOT part of solution");
                 messages[i]=(userColourChoice[i] + " is NOT part of solution");
         }
+        messagesCollector.push(messages[i]);
     }
+    
 
     alert(messages.join("\n"));
-    
+    messagesCollector.push("\n***************Round"+ roundCounter +"*****************\n");
+
+    alert(messagesCollector);
     console.log(messages);
     console.log("**************");
     runningGameLevelChoiche--;
+    roundCounter++;
 
     if (userColourChoice[0]===computerColourChoice[0] && 
         userColourChoice[1]===computerColourChoice[1] && 
