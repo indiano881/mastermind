@@ -13,24 +13,24 @@ for (let i=0; i<computerColourChoice.length; i++) {
     computerColourChoice[i]=COLOUR_DATABASE[Math.floor((Math.random()*COLOUR_DATABASE.length))];
 }    
 
-const displayAlertWrongInput = alertString => alert(`Sorry Input NOT VALID ${alertString} `);
+const displayAlertWrongInput = (alertString = "") => alert(`Sorry Input NOT VALID ${alertString} `);
 
 console.log(computerColourChoice);
-//user: welcome and choiche of coulurs
+//user: welcome and choiche of coulors
 alert("***** Welcome at Mastermind *****");
 
-alert("*****Instructions: guess the 4 colours the computer has choosen. *****\n ***** Choose within: --red--yellow--green--blue--pink--white-- ****** \n***** Same colours can be desplayed MORE than one time *****");
+alert("*****Instructions: guess the 4 colours the computer has choosen. *****\n ***** Choose within: red yellow green blue pink white ****** \n***** Same colours can be desplayed MORE than one time *****");
 
 do {
     difficultyLevelChoiche=prompt("Choose a level within: \n easy (max 20 attempts) \n medium (max 12 attempts) \n hard (max 8 attempts) \n mastermind (max 5 attempts)");
 
     if(!difficultyLevelChoiche) {
-            displayAlertWrongInput("To quit game exit page!");
-        } else if (LEVELS_DATABASE.includes(difficultyLevelChoiche)!==true) {
-            displayAlertWrongInput("Wrong input! Valid inputs are: easy medium hard mastermind");
+            displayAlertWrongInput("To quit the game exit or refresh page!");
+        } else if (LEVELS_DATABASE.includes(difficultyLevelChoiche)===false) {
+            displayAlertWrongInput("Valid inputs are: easy medium hard mastermind \nInputs are case sensitive");
         }
 
-} while (!difficultyLevelChoiche || LEVELS_DATABASE.includes(difficultyLevelChoiche)!==true) 
+} while (!difficultyLevelChoiche || LEVELS_DATABASE.includes(difficultyLevelChoiche)===false) 
 
 switch (difficultyLevelChoiche) {
     case "easy":
@@ -54,27 +54,21 @@ switch (difficultyLevelChoiche) {
 do {
 
     for (let i=0; i<userColourChoice.length; i++) {
+
         do {
+            
             userColourChoice[i]= prompt("Choose within: \n red--yellow--green--blue--pink--white-- \n at position:\n "+ 
             (i+1) +"/4 \n Your choiches are ==>\n " +userColourChoice.join("--") +
             "\n You have " + runningGameLevelChoiche+ " max attempts left!\n" +
             "----------");
-            if (!userColourChoice[i] || 
-                userColourChoice[i]!=="red" && 
-                userColourChoice[i]!=="yellow" &&
-                userColourChoice[i]!=="green" &&
-                userColourChoice[i]!=="blue" &&
-                userColourChoice[i]!=="pink" &&
-                userColourChoice[i]!=="white") {
-                    displayAlertWrongInput();
+
+            if (!userColourChoice[i]) {
+                    displayAlertWrongInput("To quit the game exit or refresh page!");
+                } else if (COLOUR_DATABASE.includes(userColourChoice)===false) {
+                    displayAlertWrongInput("Valid inputs are: \nred yellow green blue pink white \nInputs are case sensitive");
                 }
-        } while (!userColourChoice[i] || 
-            userColourChoice[i]!=="red" && 
-            userColourChoice[i]!=="yellow" &&
-            userColourChoice[i]!=="green" &&
-            userColourChoice[i]!=="blue" &&
-            userColourChoice[i]!=="pink" &&
-            userColourChoice[i]!=="white")
+
+        } while (!userColourChoice[i] || COLOUR_DATABASE.includes(userColourChoice)===false)
 
         if (userColourChoice[i]===computerColourChoice[i]) {
 
