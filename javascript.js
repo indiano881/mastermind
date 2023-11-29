@@ -1,6 +1,7 @@
 //SISTEMARE COLOUR PRESENT????
 const COLOUR_DATABASE = ["red","yellow", "green", "blue", "pink","white"];
-let computerColourChoice = ["empty-colour","empty-colour","empty-colour","empty-colour"]; //fix this new array(4)???
+const LEVELS_DATABASE = ["easy","medium","hard","mastermind"];
+let computerColourChoice = new Array (4); ;
 let userColourChoice = new Array(4);
 let messages= new Array (4);
 let userHasWon= false;
@@ -12,7 +13,7 @@ for (let i=0; i<computerColourChoice.length; i++) {
     computerColourChoice[i]=COLOUR_DATABASE[Math.floor((Math.random()*COLOUR_DATABASE.length))];
 }    
 
-const displayAlertWrongInput = () => alert("Sorry Input EMPTY or NOT VALID");
+const displayAlertWrongInput = alertString => alert(`Sorry Input NOT VALID ${alertString} `);
 
 console.log(computerColourChoice);
 //user: welcome and choiche of coulurs
@@ -23,19 +24,13 @@ alert("*****Instructions: guess the 4 colours the computer has choosen. *****\n 
 do {
     difficultyLevelChoiche=prompt("Choose a level within: \n easy (max 20 attempts) \n medium (max 12 attempts) \n hard (max 8 attempts) \n mastermind (max 5 attempts)");
 
-    if(!difficultyLevelChoiche || 
-        difficultyLevelChoiche!=="easy" &&
-        difficultyLevelChoiche!=="medium" &&
-        difficultyLevelChoiche!=="hard" &&
-        difficultyLevelChoiche!=="mastermind" ) {
-            displayAlertWrongInput();
+    if(!difficultyLevelChoiche) {
+            displayAlertWrongInput("To quit game exit page!");
+        } else if (LEVELS_DATABASE.includes(difficultyLevelChoiche)!==true) {
+            displayAlertWrongInput("Wrong input! Valid inputs are: easy medium hard mastermind");
         }
 
-} while (!difficultyLevelChoiche || 
-    difficultyLevelChoiche!=="easy" &&
-    difficultyLevelChoiche!=="medium" &&
-    difficultyLevelChoiche!=="hard" &&
-    difficultyLevelChoiche!=="mastermind" ) 
+} while (!difficultyLevelChoiche || LEVELS_DATABASE.includes(difficultyLevelChoiche)!==true) 
 
 switch (difficultyLevelChoiche) {
     case "easy":
