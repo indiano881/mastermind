@@ -2,6 +2,7 @@
 const COLOUR_DATABASE = ["red","yellow", "green", "blue", "pink","white"];
 const LEVELS_DATABASE = ["easy","medium","hard","mastermind"];
 let copy_COLOUR_DATABASE= Array.from(COLOUR_DATABASE);
+let copy_two_COLOUR_DATABASE= Array.from(COLOUR_DATABASE);
 let computerColourChoice = new Array (4); ;
 let userColourChoice = new Array(4);
 let messages= new Array (4);
@@ -13,25 +14,18 @@ let runningGameLevelChoiche;
 //functions
 const displayAlertWrongInput = (alertString = "") => alert(`Sorry Input NOT VALID ${alertString} `);
 
-
-//Computer colour array generator
-for (let i = 0; i < computerColourChoice.length; i++) {
-    removeColourIndex = Math.floor(Math.random() * copy_COLOUR_DATABASE.length);
-    computerColourChoice[i] = copy_COLOUR_DATABASE.splice(removeColourIndex, 1)[0];
-}
-
 //user: welcome and choiche of coulors
 alert("***** Welcome at Mastermind *****");
 
-alert("*****Instructions: guess the 4 colours the computer has choosen. *****\n ***** Choose within: red yellow green blue pink white ****** \n***** The colours choosen by the computer will be ALL different- *****");
+alert("*****Instructions: guess the 4 colours the computer has choosen. *****\n ***** Choose within: red yellow green blue pink white ******\n*****Hard level adds black color. Level mastermind add black and violet colour***** \n***** The colours choosen by the computer will be ALL different- *****");
 
 do {
-    difficultyLevelChoiche=prompt("Choose a level within: \n easy (max 20 attempts) \n medium (max 12 attempts) \n hard (max 8 attempts) \n mastermind (max 5 attempts)");
+    difficultyLevelChoiche=prompt("Choose a level within: \n easy (max 20 attempts) \n medium (max 12 attempts) \n hard (max 8 attempts + 1 extra colour) \n mastermind (max 5 attempts + 2 extra colours)");
 
     if(!difficultyLevelChoiche) {
             displayAlertWrongInput("To quit the game exit or refresh page!");
         } else if (LEVELS_DATABASE.includes(difficultyLevelChoiche)===false) {
-            displayAlertWrongInput("Valid inputs are: easy medium hard mastermind \nInputs are case sensitive");
+            displayAlertWrongInput("Valid inputs are:\n easy medium hard mastermind \nInputs are case sensitive");
         }
 
 } while (!difficultyLevelChoiche || LEVELS_DATABASE.includes(difficultyLevelChoiche)===false) 
@@ -45,15 +39,26 @@ switch (difficultyLevelChoiche) {
         break;
     case "hard":
         runningGameLevelChoiche=8;
+        copy_COLOUR_DATABASE.push("black");
+        COLOUR_DATABASE.push("black");
         break;
     case "mastermind":
         runningGameLevelChoiche=5;
+        copy_COLOUR_DATABASE.push("black");
+        copy_COLOUR_DATABASE.push("violet");
+        COLOUR_DATABASE.push("black");
+        COLOUR_DATABASE.push("violet");
         break;
     default:
         break;
 }
+//Computer colour array generator
+for (let i = 0; i < computerColourChoice.length; i++) {
+    removeColourIndex = Math.floor(Math.random() * copy_COLOUR_DATABASE.length);
+    computerColourChoice[i] = copy_COLOUR_DATABASE.splice(removeColourIndex, 1)[0];
+}
 
-    console.log(userColourChoice);
+alert(computerColourChoice);
 
 do {
 
@@ -61,7 +66,7 @@ do {
 
         do {
             
-            userColourChoice[i]= prompt("Choose within: \n red yellow green blue pink white \n at position:\n "+ 
+            userColourChoice[i]= prompt("Choose within: \n" + COLOUR_DATABASE.join(" ")+ "\n at position:\n "+ 
             (i+1) +"/4 \n Your choiches are ==>\n " +userColourChoice.join("--") +
             "\n You have " + runningGameLevelChoiche+ " max attempts left!\n" +
             "----------");
@@ -90,7 +95,7 @@ do {
         }
     }
 
-    alert(messages.join(" ==> "));
+    alert(messages.join("\n"));
     
     console.log(messages);
     console.log("**************");
