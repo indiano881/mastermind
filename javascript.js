@@ -21,8 +21,9 @@ const displayAlertWrongInput = (alertString = "") => alert(`Sorry Input NOT VALI
 const quitGame = () => {
     
         let answer= prompt("press Cancel again to quit or OK to go back");
+        
         if (answer.trim()==="") {
-            
+            //go back to previous page
         } 
 }
 
