@@ -6,6 +6,7 @@ let computerColourChoice = new Array (4);
 let userColourChoice = new Array(4);
 let messages = new Array (4);
 let messagesCollector = [];
+
 //variables
 const EXTRA_COLOUR_ONE = "BLACK";
 const EXTRA_COLOUR_TWO = "WHITE";
@@ -14,8 +15,16 @@ let userHasWon = false;
 let difficultyLevelChoiche;
 let runningGameLevelChoiche;
 let roundCounter = 1;
+
 //functions
 const displayAlertWrongInput = (alertString = "") => alert(`Sorry Input NOT VALID ${alertString} `);
+const quitGame = () => {
+    
+        let answer= prompt("press Cancel again to quit or OK to go back");
+        if (answer.trim()==="") {
+            
+        } 
+}
 
 //user: welcome and choiches of coulors
 alert("***** Welcome at Mastermind *****");
@@ -28,17 +37,18 @@ alert("***Instructions: guess the 4 colours the computer has choosen. ***" +
 //Difficulty-level choiches with validation
 do {
 
-    difficultyLevelChoiche=prompt("Choose a level within: \n easy (max 14 attempts) \n medium (max 10 attempts) \n hard (max 7 attempts + 1 extra colour) \n mastermind (max 4 attempts + 2 extra colours)");
+    difficultyLevelChoiche=prompt("Choose a level within:\n \n easy (max 14 attempts) \n medium (max 10 attempts) \n hard (max 7 attempts + 1 extra colour) \n mastermind (max 4 attempts + 2 extra colours) \n \n Otherwise press Cancel to quit");
 
-    if(!difficultyLevelChoiche) {
+    if(difficultyLevelChoiche===null) {
 
-            displayAlertWrongInput("To quit the game exit or refresh page!");
+            quitGame();
+            
         } else if (LEVELS_DATABASE.includes(difficultyLevelChoiche)===false) {
 
             displayAlertWrongInput("Valid inputs are:\n"+ LEVELS_DATABASE.join(" ") + "\nInputs are case sensitive");
         }
 
-} while (!difficultyLevelChoiche || LEVELS_DATABASE.includes(difficultyLevelChoiche)===false) 
+} while (difficultyLevelChoiche===null || LEVELS_DATABASE.includes(difficultyLevelChoiche)===false) 
 
 //Difficulty-level menu
 switch (difficultyLevelChoiche) {
@@ -89,9 +99,9 @@ do {
             "\n You have " + runningGameLevelChoiche+ " max attempts left!\n" +
             "----------");
 
-            if (!userColourChoice[i]) {
+            if (userColourChoice[i]===null) {
 
-                    displayAlertWrongInput("To quit the game exit or refresh page!");
+                    quitGame();
 
                 } else if (COLOUR_DATABASE.includes(userColourChoice[i])===false) {
 
@@ -99,7 +109,7 @@ do {
 
                 }
 
-        } while (!userColourChoice[i] || COLOUR_DATABASE.includes(userColourChoice[i])===false)
+        } while (userColourChoice[i]===null || COLOUR_DATABASE.includes(userColourChoice[i])===false)
 
         //User´s input-computer colours match
         if (userColourChoice[i]===computerColourChoice[i]) {
