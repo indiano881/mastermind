@@ -16,6 +16,9 @@ let difficultyLevelChoiche;
 let runningGameLevelChoiche;
 let roundCounter = 1;
 
+//regex
+let patternLevels= /^easy|medium|hard|mastermind$/i;
+
 //functions
 const displayAlertWrongInput = (alertString = "") => alert(`Sorry Input NOT VALID ${alertString} `);
 
@@ -51,15 +54,15 @@ const startGame = () => {
 
             quitGame();
             
-        } else if (LEVELS_DATABASE.includes(difficultyLevelChoiche)===false) {
+        } else if (patternLevels.test(difficultyLevelChoiche)===false) {
 
-            displayAlertWrongInput("Valid inputs are:\n"+ LEVELS_DATABASE.join(" ") + "\nInputs are case sensitive");
+            displayAlertWrongInput("Valid inputs are:\n"+ LEVELS_DATABASE.join(" "));
         }
 
-    } while (difficultyLevelChoiche===null || LEVELS_DATABASE.includes(difficultyLevelChoiche)===false) 
+    } while (difficultyLevelChoiche===null || patternLevels.test(difficultyLevelChoiche)===false) 
 
     //Difficulty-level menu
-    switch (difficultyLevelChoiche) {
+    switch (difficultyLevelChoiche.toLowerCase()) {
 
         case "easy":
             runningGameLevelChoiche = 14;
@@ -110,7 +113,7 @@ const startGame = () => {
 
                 } else if (COLOUR_DATABASE.includes(userColourChoice[i])===false) {
 
-                    displayAlertWrongInput("Valid inputs are: \n" + COLOUR_DATABASE.join(" ") + "\nInputs are case sensitive");
+                    displayAlertWrongInput("Valid inputs are: \n" + COLOUR_DATABASE.join(" ") + "\nColour-inputs are case sensitive");
 
                 }
 
