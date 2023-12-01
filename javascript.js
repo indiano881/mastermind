@@ -32,21 +32,22 @@ const addColours = ( item ) => {
     copy_COLOUR_DATABASE.push(item);
     COLOUR_DATABASE.push(item);
 }
+const startGame = () => {
 
-//user: welcome and choiches of coulors
-alert("***** Welcome at Mastermind *****");
-alert("***Instructions: guess the 4 colours the computer has choosen. ***" +
-"\n ***Choose within: " + COLOUR_DATABASE.join(" ") +
-"***\n***Hard level adds: " + EXTRA_COLOUR_ONE +
-" Level mastermind adds: " + EXTRA_COLOUR_ONE + " and " + EXTRA_COLOUR_TWO +
- "*** \n***The colours choosen by the computer will be ALL different***");
+    //user: welcome and choiches of coulors
+    alert("***** Welcome at Mastermind *****");
+    alert("***Instructions: guess the 4 colours the computer has choosen. ***" +
+    "\n ***Choose within: " + COLOUR_DATABASE.join(" ") +
+    "***\n***Hard level adds: " + EXTRA_COLOUR_ONE +
+    " Level mastermind adds: " + EXTRA_COLOUR_ONE + " and " + EXTRA_COLOUR_TWO +
+    "*** \n***The colours choosen by the computer will be ALL different***");
 
-//Difficulty-level choiches with validation
-do {
+    //Difficulty-level choiches with validation
+    do {
 
-    difficultyLevelChoiche=prompt("Choose a level within:\n \n easy (max 14 attempts) \n medium (max 10 attempts) \n hard (max 7 attempts + 1 extra colour) \n mastermind (max 4 attempts + 2 extra colours) \n \n Otherwise press Cancel to quit");
+        difficultyLevelChoiche=prompt("Choose a level within:\n \n easy (max 14 attempts) \n medium (max 10 attempts) \n hard (max 7 attempts + 1 extra colour) \n mastermind (max 4 attempts + 2 extra colours) \n \n Otherwise press Cancel to quit");
 
-    if(difficultyLevelChoiche===null) {
+        if(difficultyLevelChoiche===null) {
 
             quitGame();
             
@@ -55,47 +56,47 @@ do {
             displayAlertWrongInput("Valid inputs are:\n"+ LEVELS_DATABASE.join(" ") + "\nInputs are case sensitive");
         }
 
-} while (difficultyLevelChoiche===null || LEVELS_DATABASE.includes(difficultyLevelChoiche)===false) 
+    } while (difficultyLevelChoiche===null || LEVELS_DATABASE.includes(difficultyLevelChoiche)===false) 
 
-//Difficulty-level menu
-switch (difficultyLevelChoiche) {
+    //Difficulty-level menu
+    switch (difficultyLevelChoiche) {
 
-    case "easy":
-        runningGameLevelChoiche = 14;
-        break;
+        case "easy":
+            runningGameLevelChoiche = 14;
+            break;
 
-    case "medium":
-        runningGameLevelChoiche = 10;
-        break;
+        case "medium":
+            runningGameLevelChoiche = 10;
+            break;
 
-    case "hard":
-        runningGameLevelChoiche = 7;
-        addColours(EXTRA_COLOUR_ONE);
-        break;
+        case "hard":
+            runningGameLevelChoiche = 7;
+            addColours(EXTRA_COLOUR_ONE);
+            break;
 
-    case "mastermind":
-        runningGameLevelChoiche= 4;
-        addColours(EXTRA_COLOUR_ONE);
-        addColours(EXTRA_COLOUR_TWO);
-        break;
+        case "mastermind":
+            runningGameLevelChoiche= 4;
+            addColours(EXTRA_COLOUR_ONE);
+            addColours(EXTRA_COLOUR_TWO);
+            break;
 
-    default:
-        break;
-}
+        default:
+            break;
+    }
 
-//Computer colour array generator
-for (let i = 0; i < computerColourChoice.length; i++) {
-    removeColourIndex = Math.floor(Math.random() * copy_COLOUR_DATABASE.length);
-    computerColourChoice[i] = copy_COLOUR_DATABASE.splice(removeColourIndex, 1)[0];
-}
+    //Computer colour array generator
+    for (let i = 0; i < computerColourChoice.length; i++) {
+        removeColourIndex = Math.floor(Math.random() * copy_COLOUR_DATABASE.length);
+        computerColourChoice[i] = copy_COLOUR_DATABASE.splice(removeColourIndex, 1)[0];
+    }
 
-//Mastermind game
-do {
+    //Mastermind game
+    do {
 
-    for ( let i=0; i<userColourChoice.length; i++ ) {
+        for ( let i=0; i<userColourChoice.length; i++ ) {
         
-        //User´s choiches with validation
-        do {
+            //User´s choiches with validation
+            do {
            
             userColourChoice[i] = prompt("Choose within: \n" + COLOUR_DATABASE.join(" ") + 
             "\n at position:\n " + (i+1) +
@@ -103,7 +104,7 @@ do {
             "\n You have " + runningGameLevelChoiche+ " max attempts left!\n" +
             "----------");
 
-            if (userColourChoice[i]===null) {
+                if (userColourChoice[i]===null) {
 
                     quitGame();
 
@@ -113,49 +114,54 @@ do {
 
                 }
 
-        } while (userColourChoice[i]===null || COLOUR_DATABASE.includes(userColourChoice[i])===false)
+            } while (userColourChoice[i]===null || COLOUR_DATABASE.includes(userColourChoice[i])===false)
 
-        //User´s input-computer colours match
-        if (userColourChoice[i]===computerColourChoice[i]) {
+            //User´s input-computer colours match
+            if (userColourChoice[i]===computerColourChoice[i]) {
 
                 messages[i] = (userColourChoice[i] + " is CORRECT in place n." + (i+1) + ". ");
                 
-        } else  if (computerColourChoice.indexOf(userColourChoice[i])!==(-1) && userColourChoice[i]!==computerColourChoice[i]) {
+            } else  if (computerColourChoice.indexOf(userColourChoice[i])!==(-1) && userColourChoice[i]!==computerColourChoice[i]) {
 
                 messages[i] = (userColourChoice[i] + " is PRESENT but not in position: " + (i+1)+ ". ");
     
-        } else {
+            } else {
 
                 messages[i] = (userColourChoice[i] + " is NOT part of solution. ");
 
+            }
+
+            messagesCollector.push(messages[i]);
+        }
+    
+        //Match messages collection and display
+        alert(messages.join("\n"));
+        messagesCollector.push("\n***************Round" + roundCounter + "*****************\n");
+        alert(messagesCollector.join(""));
+        
+        //Counters inside the main do-while loop
+        runningGameLevelChoiche--;
+        roundCounter++;
+
+        // Win loss control part
+        if (userColourChoice[0]===computerColourChoice[0] && 
+            userColourChoice[1]===computerColourChoice[1] && 
+            userColourChoice[2]===computerColourChoice[2] && 
+            userColourChoice[3]===computerColourChoice[3] ) {
+
+            userHasWon=true;
+            alert("Congratulation you won!!!!");
+            document.querySelector("h2").textContent= "Congratulation you won!!!!";
+
+        } else  if (runningGameLevelChoiche===0) {
+
+            userHasWon = false;
+            alert ("Sorry you lost!");
+            document.querySelector("h2").textContent= "Sorry you lost";
+            break;
         }
 
-        messagesCollector.push(messages[i]);
-    }
-    
-    //Match messages collection and display
-    alert(messages.join("\n"));
-    messagesCollector.push("\n***************Round" + roundCounter + "*****************\n");
-    alert(messagesCollector.join(""));
+    } while (userHasWon===false)
+}
 
-    //Counters inside the main do-while loop
-    runningGameLevelChoiche--;
-    roundCounter++;
-
-    // Win loss control part
-    if (userColourChoice[0]===computerColourChoice[0] && 
-        userColourChoice[1]===computerColourChoice[1] && 
-        userColourChoice[2]===computerColourChoice[2] && 
-        userColourChoice[3]===computerColourChoice[3] ) {
-
-        userHasWon=true;
-        alert("Congratulation you won!!!!");
-
-    } else  if (runningGameLevelChoiche===0) {
-
-        userHasWon = false;
-        alert ("Sorry you lost!");
-        break;
-    }
-
-} while (userHasWon===false)
+document.querySelector(".button-start-game div").onclick = () => startGame();
