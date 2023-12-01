@@ -18,13 +18,19 @@ let roundCounter = 1;
 
 //functions
 const displayAlertWrongInput = (alertString = "") => alert(`Sorry Input NOT VALID ${alertString} `);
+
 const quitGame = () => {
     
         let answer= prompt("press Cancel again to quit or OK to go back");
         
-        if (answer.trim()==="") {
-            //go back to previous page
+        if (answer.trim() === " ") {
+            window.history.back();
         } 
+}
+
+const addColours = ( item ) => {
+    copy_COLOUR_DATABASE.push(item);
+    COLOUR_DATABASE.push(item);
 }
 
 //user: welcome and choiches of coulors
@@ -64,16 +70,13 @@ switch (difficultyLevelChoiche) {
 
     case "hard":
         runningGameLevelChoiche = 7;
-        copy_COLOUR_DATABASE.push(EXTRA_COLOUR_ONE);
-        COLOUR_DATABASE.push(EXTRA_COLOUR_ONE);
+        addColours(EXTRA_COLOUR_ONE);
         break;
 
     case "mastermind":
         runningGameLevelChoiche= 4;
-        copy_COLOUR_DATABASE.push(EXTRA_COLOUR_ONE);
-        copy_COLOUR_DATABASE.push(EXTRA_COLOUR_TWO);
-        COLOUR_DATABASE.push(EXTRA_COLOUR_ONE);
-        COLOUR_DATABASE.push(EXTRA_COLOUR_TWO);
+        addColours(EXTRA_COLOUR_ONE);
+        addColours(EXTRA_COLOUR_TWO);
         break;
 
     default:
