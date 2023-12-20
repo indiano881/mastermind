@@ -68,8 +68,9 @@ section {
 .box {
     border: 3px solid black;
     border-radius: 50%;
-    padding:12px;
     min-height: 50px;
+    padding:12px;
+    
 }
 .red {
     background-color: red;
