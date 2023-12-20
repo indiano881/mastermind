@@ -167,4 +167,4 @@ const startGame = () => {
     } while (userHasWon===false)
 }
 
-$(".button-start-game div").click(() => startGame());
+$(".buttons-field .start-game").click(() => startGame());

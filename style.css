@@ -1,3 +1,12 @@
+:root {
+    --padding-main: 16px;
+    --primary-color: #DFF8EB;
+    --secondary-color: #000;
+    --terziary-color: #fff;
+    --border-standard: 1px solid black;
+
+}
+
 * {
     box-sizing: border-box;
 }
@@ -7,6 +16,7 @@ html {
 }
 
 body {
+    background-color: var(--primary-color);
     display: flex;
     flex-direction: column;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -18,10 +28,9 @@ body {
 
 header,
 footer {
-    background-color: #235789;
-    border: 1px solid black;
-    color: #DFF8EB;
-    padding: 24px;
+    
+    color: var(--secondary-color);
+    padding: var(--padding-main);
     
 
 }
@@ -34,25 +43,24 @@ h1 {
 }
 
 section {
-    background-color: #DFF8EB;
     flex-grow: 1;
 }
-.button-start-game {
+.buttons-field {
     align-items: center;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
-    font-size: calc( 1.75rem + 1.5vw);
+    font-size: calc( 1.5rem + 1.5vw);
 }
 
-.button-start-game div{
+button {
     background-color: #f7f7ff;
-    border: 1px solid black;
+    border: var(--border-standard);
     border-radius: 10px;
     font-weight: bold;
     margin: 1rem;
-    min-width: calc( 270px - 1.5vw);
-    padding: 1rem;
+    min-width: calc( 100px - 1.5vw);
+    padding: 0.5rem;
     text-align: center;
     text-decoration: none; 
     transition: all linear 0.4s; 
@@ -70,7 +78,7 @@ section {
     border: 3px solid black;
     border-radius: 50px;
     min-height: 50px;
-    padding:12px;
+    padding: 12px;
     margin-bottom: 16px;
     
 }
