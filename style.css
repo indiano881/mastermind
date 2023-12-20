@@ -42,6 +42,13 @@ h1 {
   
 }
 
+h3 {
+    text-align: center;
+    font-size: calc(1rem + 1vw);
+    font-style: oblique; 
+    font-weight: bold;
+}
+
 section {
     flex-grow: 1;
 }
@@ -115,6 +122,14 @@ button {
     background-color: white;
 }
 
+.messages-field {
+    background-color: var(--terziary-color);
+    border: var(--border-standard);
+    border-radius: 10px;
+    min-height: 300px;
+    margin-left: var(--padding-main);
+    margin-right: var(--padding-main);
+}
 
 @media screen and (min-width: 768px){
     

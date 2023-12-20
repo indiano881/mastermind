@@ -38,12 +38,8 @@ const addColours = ( item ) => {
 const startGame = () => {
 
     //user: welcome and choiches of coulors
-    alert("***** Welcome at Mastermind *****");
-    alert("***Instructions: guess the 4 colours the computer has choosen. ***" +
-    "\n ***Choose within: " + COLOUR_DATABASE.join(" ") +
-    "***\n***Hard level adds: " + EXTRA_COLOUR_ONE +
-    " Level mastermind adds: " + EXTRA_COLOUR_ONE + " and " + EXTRA_COLOUR_TWO +
-    "*** \n***The colours choosen by the computer will be ALL different***");
+    //inserire time out per flow
+    
 
     //Difficulty-level choiches with validation
     do {
@@ -166,5 +162,10 @@ const startGame = () => {
 
     } while (userHasWon===false)
 }
-
+$("h2").text("***** Welcome at Mastermind *****");
+    $("h2").text("***Instructions: guess the 4 colours the computer has choosen. ***" +
+    "\n ***Choose within: " + COLOUR_DATABASE.join(" ") +
+    "***\n***Hard level adds: " + EXTRA_COLOUR_ONE +
+    " Level mastermind adds: " + EXTRA_COLOUR_ONE + " and " + EXTRA_COLOUR_TWO +
+    "*** \n***The colours choosen by the computer will be ALL different***");
 $(".buttons-field .start-game").click(() => startGame());
