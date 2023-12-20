@@ -25,6 +25,7 @@ footer {
     
 
 }
+
 h1 {
     font-size: calc(2rem + 2vw);
     font-style: oblique; 
@@ -61,16 +62,21 @@ section {
 .grid-display-colours {
     display: grid;
     gap: 3px;
-    grid-template: 1fr / repeat(10, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     margin: 5% 10%;
 }    
 
 .box {
     border: 3px solid black;
-    border-radius: 50%;
+    border-radius: 50px;
     min-height: 50px;
     padding:12px;
+    margin-bottom: 16px;
     
+}
+
+.box:hover {
+    transform: scale(1.1);
 }
 .red {
     background-color: red;
