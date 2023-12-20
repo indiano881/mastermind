@@ -154,13 +154,13 @@ const startGame = () => {
 
             userHasWon=true;
             alert("Congratulation you won!!!!");
-            document.querySelector("h2").textContent= "Congratulation you won!!!!";
+            $("h2").text("Congratulation you won!!!!");
 
         } else  if (runningGameLevelChoiche===0) {
 
             userHasWon = false;
             alert ("Sorry you lost!");
-            document.querySelector("h2").textContent= "Sorry you lost";
+            $("h2").text("Sorry you lost");
             break;
         }
 
