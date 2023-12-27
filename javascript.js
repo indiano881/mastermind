@@ -162,10 +162,17 @@ const startGame = () => {
 
     } while (userHasWon===false)
 }
-$("h2").text("***** Welcome at Mastermind *****");
-    $("h2").text("***Instructions: guess the 4 colours the computer has choosen. ***" +
-    "\n ***Choose within: " + COLOUR_DATABASE.join(" ") +
-    "***\n***Hard level adds: " + EXTRA_COLOUR_ONE +
-    " Level mastermind adds: " + EXTRA_COLOUR_ONE + " and " + EXTRA_COLOUR_TWO +
-    "*** \n***The colours choosen by the computer will be ALL different***");
+
+
+$(".instructions").click(() => {
+    $(".message-one").text("Guess the 4 colours the computer has choosen. \nChoose within: " + 
+    COLOUR_DATABASE.join(" ") + "\nHard level adds: " + EXTRA_COLOUR_ONE +
+    "\nLevel mastermind adds: " + EXTRA_COLOUR_ONE + " and " + EXTRA_COLOUR_TWO +
+    "\nThe colours choosen by the computer will be ALL different")
+})
+    
+
+
 $(".buttons-field .start-game").click(() => startGame());
+
+$(".continue-session").on("click",() => window.history.back() );

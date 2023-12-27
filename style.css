@@ -64,6 +64,7 @@ button {
     background-color: #f7f7ff;
     border: var(--border-standard);
     border-radius: 10px;
+    cursor: pointer;
     font-weight: bold;
     margin: 1rem;
     min-width: calc( 100px - 1.5vw);
@@ -129,6 +130,11 @@ button {
     min-height: 300px;
     margin-left: var(--padding-main);
     margin-right: var(--padding-main);
+}
+.message-one {
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: bold;
 }
 
 @media screen and (min-width: 768px){
